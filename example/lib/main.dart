@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  Directory _downloadsDirectory;
+  Directory? _downloadsDirectory;
 
   @override
   void initState() {
@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initDownloadsDirectoryState() async {
-    Directory downloadsDirectory;
+    Directory? downloadsDirectory;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       downloadsDirectory = await DownloadsPathProvider.downloadsDirectory;
@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
         body: new Center(
           child: new Text(
             _downloadsDirectory != null
-                ? 'Downloads directory: ${_downloadsDirectory.path}\n'
+                ? 'Downloads directory: ${_downloadsDirectory?.path}\n'
                 : 'Could not get the downloads directory',
           ),
         ),
